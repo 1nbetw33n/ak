@@ -5,7 +5,13 @@ package Internship2;
 public class OneTimePad {
 
     final protected static String stringToHex(String in){
-        return null;
+        StringBuffer buffer = new StringBuffer();
+        char[] chars = in.toCharArray();
+        for (Character c : chars) {
+            String hexString = Integer.toHexString(c);
+            buffer.append(hexString);
+        }
+        return buffer.toString();
     }
 
 
