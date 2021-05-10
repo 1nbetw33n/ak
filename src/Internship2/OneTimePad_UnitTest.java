@@ -1,7 +1,10 @@
 package Internship2;
 
 import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
+
+import java.math.BigInteger;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OneTimePad_UnitTest {
 
@@ -22,18 +25,22 @@ public class OneTimePad_UnitTest {
         this.counter = 0l;
     }
 
+
+
+
     @Test
     @DisplayName("tests, if the string -> hex conversion works")
     void testStringToHex(){
-        assertEquals("48656c6c6f20576f726c64", OneTimePad.stringToHex(this.plainText1), "damn! something went wrong - no." + ++counter);
-        assertEquals("7375706572736563726574", OneTimePad.stringToHex(this.key1), "damn! something went wrong - no." + ++counter);
+        assertEquals("48656c6c6f20576f726c64", OneTimePad.stringToHexString(this.plainText1), "damn! something went wrong - no." + ++counter);
+        assertEquals("7375706572736563726574", OneTimePad.stringToHexString(this.key1), "damn! something went wrong - no." + ++counter);
 
     }
+
 
     @Test
     @DisplayName("tests, if XORing two strings works correctly")
     void testXorHexStrings(){
-        assertEquals("3b101c091d53320c000910", OneTimePad.xorHexStrings(this.plainText1, this.key1), "damn! something went wrong - no." + ++counter);
+        assertEquals(new BigInteger("3b101c091d53320c000910", 16).toString(), OneTimePad.xorHexStrings("48656c6c6f20576f726c64", "7375706572736563726574"), "damn! something went wrong - no." + ++counter);
     }
 
     @Disabled

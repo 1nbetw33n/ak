@@ -1,13 +1,17 @@
 package Internship2;
 
 
+import java.math.BigInteger;
 
 public class OneTimePad {
 
+
+
+
     //HELPER_METHOD for string -> hex conversion
-    final protected static String stringToHex(String in){
+    final protected static String stringToHexString(String in){
         StringBuffer buffer = new StringBuffer();
-        char[] chars = in.toCharArray();
+        char[] chars        = in.toCharArray();
         for (Character c : chars) {
             String hexString = Integer.toHexString(c);
             buffer.append(hexString);
@@ -17,9 +21,9 @@ public class OneTimePad {
 
 
     //HELPER_METHOD for XOR-ing 2 hex_strings
-    final protected  static  String xorHexStrings(String hexIn1, String hexIn2){
-        return null;
-    }
+    final protected static String xorHexStrings(String hexIn1, String hexIn2){
+        return (new BigInteger(hexIn1, 16).xor(new BigInteger(hexIn2, 16))).toString();
+    }//TODO: herausfinden, wo ich bin und was ich tue(n muss)
 
 
 
