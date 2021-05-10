@@ -8,6 +8,8 @@ public class OneTimePadPrint {
         String plainText2 = "FYWHXANMDZMTQQJXQBWD";
         String plainText3 = "LEJSCWXWVKDVAPWPBXWI";
 
+        String string = "Hello World";
+
         System.out.println(OneTimePad.encrypt(plainText1, "CORONACORONACORONACORONA"));
 
 
@@ -23,8 +25,10 @@ public class OneTimePadPrint {
 
 
         System.out.println(plainText.toString());
-        System.out.println(OneTimePad.encrypt("Tourismusinitalien", "CORONACORONACORONACORONA"));
 
+        System.out.println(string.length());
+
+        System.out.println(OneTimePad.decrypt("LEJSCWXWVKDVAPWPBXWI", "CORONACORONACORONACORONA"));
 
 
     }

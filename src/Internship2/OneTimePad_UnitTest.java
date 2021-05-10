@@ -11,7 +11,7 @@ public class OneTimePad_UnitTest {
 
     @BeforeEach
     void setUp(){
-        this.plainText = "HELLO";
+        this.plainText = "Hello World";
         this.key       = "XMCKL";
     }
 
@@ -23,14 +23,23 @@ public class OneTimePad_UnitTest {
     }
 
     @Test
-    @DisplayName("test, if the plain text is correctly encrypted")
-    void testEncryption(){
-        assertEquals("EQNVZ", OneTimePad.encrypt(this.plainText, this.key),"oops, something went wrong no." + ++counter);
+    @DisplayName("tests, if the string -> hex conversion works")
+    void testStringToHex(){
+        assertEquals("48656c6c6f20576f726c64", OneTimePad.stringToHex(this.plainText), "damn! something went wrong - no." + ++counter);
+
     }
 
+    @Disabled
+    @Test
+    @DisplayName("test, if the plain text is correctly encrypted")
+    void testEncryption(){
+        assertEquals("EQNVZ", OneTimePad.encrypt(this.plainText, this.key),"damn! something went wrong - no." + ++counter);
+    }
+
+    @Disabled
     @Test
     @DisplayName("test, if the cipher text is correctly decrypted")
     void testDecryption(){
-        assertEquals("HELLO", OneTimePad.decrypt(OneTimePad.encrypt(this.plainText, this.key), this.key), "oops, something went wrong no." + ++counter);
+        assertEquals("HELLO", OneTimePad.decrypt(OneTimePad.encrypt(this.plainText, this.key), this.key), "damn! something went wrong - no." + ++counter);
     }
 }

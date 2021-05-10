@@ -4,6 +4,12 @@ package Internship2;
 
 public class OneTimePad {
 
+    final protected static String stringToHex(String in){
+        return null;
+    }
+
+
+
 
     final protected static String encrypt (String plainText, String key){
 
