@@ -5,41 +5,48 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class OneTimePad_UnitTest {
 
-    private String plainText;
-    private String key;
+    private String plainText1;
+    private String key1;
     private long   counter;
 
     @BeforeEach
     void setUp(){
-        this.plainText = "Hello World";
-        this.key       = "XMCKL";
+        this.plainText1 = "Hello World";
+        this.key1       = "supersecret";
     }
 
     @AfterEach
     void tearDown(){
-        this.plainText = null;
-        this.key = null;
+        this.plainText1 = null;
+        this.key1 = null;
         this.counter = 0l;
     }
 
     @Test
     @DisplayName("tests, if the string -> hex conversion works")
     void testStringToHex(){
-        assertEquals("48656c6c6f20576f726c64", OneTimePad.stringToHex(this.plainText), "damn! something went wrong - no." + ++counter);
+        assertEquals("48656c6c6f20576f726c64", OneTimePad.stringToHex(this.plainText1), "damn! something went wrong - no." + ++counter);
+        assertEquals("7375706572736563726574", OneTimePad.stringToHex(this.key1), "damn! something went wrong - no." + ++counter);
 
+    }
+
+    @Test
+    @DisplayName("tests, if XORing two strings works correctly")
+    void testXorHexStrings(){
+        assertEquals("3b101c091d53320c000910", OneTimePad.xorHexStrings(this.plainText1, this.key1), "damn! something went wrong - no." + ++counter);
     }
 
     @Disabled
     @Test
-    @DisplayName("test, if the plain text is correctly encrypted")
+    @DisplayName("tests, if the plain text is correctly encrypted")
     void testEncryption(){
-        assertEquals("EQNVZ", OneTimePad.encrypt(this.plainText, this.key),"damn! something went wrong - no." + ++counter);
+        assertEquals("EQNVZ", OneTimePad.encrypt(this.plainText1, this.key1),"damn! something went wrong - no." + ++counter);
     }
 
     @Disabled
     @Test
-    @DisplayName("test, if the cipher text is correctly decrypted")
+    @DisplayName("tests, if the cipher text is correctly decrypted")
     void testDecryption(){
-        assertEquals("HELLO", OneTimePad.decrypt(OneTimePad.encrypt(this.plainText, this.key), this.key), "damn! something went wrong - no." + ++counter);
+        assertEquals("HELLO", OneTimePad.decrypt(OneTimePad.encrypt(this.plainText1, this.key1), this.key1), "damn! something went wrong - no." + ++counter);
     }
 }

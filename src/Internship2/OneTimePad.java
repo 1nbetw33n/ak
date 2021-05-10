@@ -16,6 +16,11 @@ public class OneTimePad {
     }
 
 
+    //HELPER_METHOD for XOR-ing 2 hex_strings
+    final protected  static  String xorHexStrings(String hexIn1, String hexIn2){
+        return null;
+    }
+
 
 
     final protected static String encrypt (String plainText, String key){
