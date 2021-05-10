@@ -4,6 +4,7 @@ package Internship2;
 
 public class OneTimePad {
 
+    //HELPER_METHOD for string -> hex conversion
     final protected static String stringToHex(String in){
         StringBuffer buffer = new StringBuffer();
         char[] chars = in.toCharArray();
