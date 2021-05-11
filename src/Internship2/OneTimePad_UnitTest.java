@@ -2,8 +2,6 @@ package Internship2;
 
 import org.junit.jupiter.api.*;
 
-import java.math.BigInteger;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OneTimePad_UnitTest {
@@ -29,26 +27,35 @@ public class OneTimePad_UnitTest {
 
 
     @Test
-    @DisplayName("tests, if the string -> hex conversion works")
-    void testStringToHex(){
-        assertEquals("48656c6c6f20576f726c64", OneTimePad.stringToHexString(this.plainText1), "damn! something went wrong - no." + ++counter);
-        assertEquals("7375706572736563726574", OneTimePad.stringToHexString(this.key1), "damn! something went wrong - no." + ++counter);
-
+    @DisplayName("tests, if the ASCII string -> hex string conversion works like intended")
+    void testAsciiStringToHexString(){
+        assertEquals("48656c6c6f20576f726c64", OneTimePad.asciiStringToHexString(this.plainText1), "damn! something went wrong - no." + ++counter);
+        assertEquals("7375706572736563726574", OneTimePad.asciiStringToHexString(this.key1), "damn! something went wrong - no." + ++counter);
     }
 
 
     @Test
-    @DisplayName("tests, if XORing two strings works correctly")
-    void testXorHexStrings(){
-        assertEquals(new BigInteger("3b101c091d53320c000910", 16).toString(), OneTimePad.xorHexStrings("48656c6c6f20576f726c64", "7375706572736563726574"), "damn! something went wrong - no." + ++counter);
+    @DisplayName("tests, if the hex string -> ASCII string conversion works like intended")
+    void testHexStringToAsciiString(){
+        assertEquals("ZYAPFOSTCH", OneTimePad.hexStringToAsciiString(this.key1), "damn! something went wrong - no." + ++counter);
     }
 
-    @Disabled
+
+
+
+    @Test
+    @DisplayName("tests, if XORing two strings works like intended")
+    void testXorHexStrings(){
+        assertEquals("3b101c091d53320c000910", OneTimePad.xorHexStrings("48656c6c6f20576f726c64", "7375706572736563726574"), "damn! something went wrong - no." + ++counter);
+    }
+
+
     @Test
     @DisplayName("tests, if the plain text is correctly encrypted")
     void testEncryption(){
-        assertEquals("EQNVZ", OneTimePad.encrypt(this.plainText1, this.key1),"damn! something went wrong - no." + ++counter);
+        assertEquals("3b101c091d53320c000910", OneTimePad.encrypt(this.plainText1, this.key1),"damn! something went wrong - no." + ++counter);
     }
+
 
     @Disabled
     @Test
