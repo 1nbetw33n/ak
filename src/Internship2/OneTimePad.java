@@ -25,10 +25,11 @@ public class OneTimePad {
         StringBuilder out = new StringBuilder();
         for (int i = 0; i < in.length(); i += 2) {
             String hexLetter = in.substring(i, i + 2);
-            out.append((char) Long.parseLong(hexLetter, 16));
+            out.append((char) Integer.parseInt(hexLetter, 16));
         }
         return out.toString();
     }
+
 
     //HELPER_METHOD for XOR-ing 2 hex_strings
     final protected static String xorHexStrings(String hexIn1, String hexIn2){
@@ -36,19 +37,21 @@ public class OneTimePad {
     }
 
 
-
+    //here we do the encryption with a given key
     final protected static String encrypt (final String PLAINTEXT, final String KEY){
-        //conversion to hex-strings
-        StringBuilder hexPlain = new StringBuilder(asciiStringToHexString(PLAINTEXT));
-        StringBuilder hexKey   = new StringBuilder(asciiStringToHexString(KEY));
-
-        //plain text XOR key
-        return xorHexStrings(hexPlain.toString(), hexKey.toString());
+        //converts plain and key -> hex strings, then does plain text XOR key
+        return xorHexStrings(asciiStringToHexString(PLAINTEXT), asciiStringToHexString(KEY));
     }
 
 
-    final protected static String decrypt (String plainText, String key){
-       return null;
+    //here we break the encryption with a given key
+    final protected static String decrypt (final String CIPHER, final String KEY){
+        //conversion to hex-strings
+        StringBuilder hexCipher = new StringBuilder(asciiStringToHexString(CIPHER));
+        StringBuilder hexKey   = new StringBuilder(asciiStringToHexString(KEY));
+
+        //cipher text XOR key
+        return xorHexStrings(hexCipher.toString(), hexKey.toString());
     }
 
 
