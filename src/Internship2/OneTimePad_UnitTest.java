@@ -10,20 +10,22 @@ public class OneTimePad_UnitTest {
     private String key1;
     private long   counter;
 
+
     @BeforeEach
+    @DisplayName("initializing instance variables")
     void setUp(){
         this.plainText1 = "Hello World";
         this.key1       = "supersecret";
     }
 
+
     @AfterEach
+    @DisplayName("de-referencing instance variables ")
     void tearDown(){
         this.plainText1 = null;
         this.key1 = null;
         this.counter = 0l;
     }
-
-
 
 
     @Test
@@ -37,7 +39,8 @@ public class OneTimePad_UnitTest {
     @Test
     @DisplayName("tests, if the hex string -> ASCII string conversion works like intended")
     void testHexStringToAsciiString(){
-        assertEquals("ZYAPFOSTCH", OneTimePad.hexStringToAsciiString(this.key1), "damn! something went wrong - no." + ++counter);
+        assertEquals("7375706572736563726574", OneTimePad.hexStringToAsciiString(this.key1), "damn! something went wrong - no." + ++counter);
+        assertEquals("48656c6c6f20576f726c64", OneTimePad.hexStringToAsciiString(this.plainText1), "damn! something went wrong - no." + ++counter);
     }
 
 
