@@ -39,19 +39,15 @@ public class OneTimePad {
 
     //here we do the encryption with a given key
     final protected static String encrypt (final String PLAINTEXT, final String KEY){
-        //converts plain and key -> hex strings, then does plain text XOR key
+        //converts plain and key -> hex strings, then does plain XOR key
         return xorHexStrings(asciiStringToHexString(PLAINTEXT), asciiStringToHexString(KEY));
     }
 
 
     //here we break the encryption with a given key
     final protected static String decrypt (final String CIPHER, final String KEY){
-        //conversion to hex-strings
-        StringBuilder hexCipher = new StringBuilder(asciiStringToHexString(CIPHER));
-        StringBuilder hexKey   = new StringBuilder(asciiStringToHexString(KEY));
-
-        //cipher text XOR key
-        return xorHexStrings(hexCipher.toString(), hexKey.toString());
+        //converts cipher and key -> hex strings, then cipher XOR key
+        return xorHexStrings(asciiStringToHexString(CIPHER), asciiStringToHexString(KEY));
     }
 
 

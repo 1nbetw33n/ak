@@ -70,6 +70,7 @@ public class OneTimePad_UnitTest {
     }
 
 
+    @Disabled
     @Test
     @DisplayName("tests, if the cipher text is correctly decrypted")
     void testDecryption(){
