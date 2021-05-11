@@ -39,8 +39,8 @@ public class OneTimePad_UnitTest {
     @Test
     @DisplayName("tests, if the hex string -> ASCII string conversion works like intended")
     void testHexStringToAsciiString(){
-        assertEquals("7375706572736563726574", OneTimePad.hexStringToAsciiString(this.key1), "damn! something went wrong - no." + ++counter);
-        assertEquals("48656c6c6f20576f726c64", OneTimePad.hexStringToAsciiString(this.plainText1), "damn! something went wrong - no." + ++counter);
+        assertEquals(this.key1, OneTimePad.hexStringToAsciiString("7375706572736563726574"), "damn! something went wrong - no." + ++counter);
+        assertEquals(this.plainText1, OneTimePad.hexStringToAsciiString("48656c6c6f20576f726c64"), "damn! something went wrong - no." + ++counter);
     }
 
 

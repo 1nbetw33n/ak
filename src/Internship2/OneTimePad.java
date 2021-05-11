@@ -21,8 +21,13 @@ public class OneTimePad {
 
 
     //HELPER METHOD for hex string -> ASCII string conversion
-    final protected static String hexStringToAsciiString(final String IN){
-        return null;
+    final protected static String hexStringToAsciiString(String in){
+        StringBuilder out = new StringBuilder();
+        for (int i = 0; i < in.length(); i += 2) {
+            String hexLetter = in.substring(i, i + 2);
+            out.append((char) Long.parseLong(hexLetter, 16));
+        }
+        return out.toString();
     }
 
     //HELPER_METHOD for XOR-ing 2 hex_strings
