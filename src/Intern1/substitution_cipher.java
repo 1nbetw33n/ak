@@ -1,4 +1,4 @@
-package Internship1;
+package Intern1;
 
 import java.util.*;
 import java.util.stream.Collectors;

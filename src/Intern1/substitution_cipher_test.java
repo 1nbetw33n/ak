@@ -1,4 +1,4 @@
-package Internship1;
+package Intern1;
 
 public class substitution_cipher_test {
 

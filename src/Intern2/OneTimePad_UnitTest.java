@@ -1,4 +1,4 @@
-package Internship2;
+package Intern2;
 
 import org.junit.jupiter.api.*;
 
