@@ -47,7 +47,7 @@ public class OneTimePad {
     //here we break the encryption with a given key
     final protected static String decrypt (final String CIPHER, final String KEY){
         //converts cipher and key -> hex strings, then cipher XOR key
-        return xorHexStrings(asciiStringToHexString(CIPHER), asciiStringToHexString(KEY));
+        return (xorHexStrings(asciiStringToHexString(CIPHER), asciiStringToHexString(KEY))).toString();
     }
 
 

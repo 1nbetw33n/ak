@@ -60,6 +60,8 @@ public class OneTimePad_UnitTest {
     void testXorHexStrings(){
         assertEquals("3b101c091d53320c000910", OneTimePad.xorHexStrings("48656c6c6f20576f726c64", "7375706572736563726574"), "damn! something went wrong - no." + ++counter);
         assertEquals("ec4afd195eff787295db6e5a0e7b4054eece4ecd3793ca89", OneTimePad.xorHexStrings("4f7065726174696f6e2073746172742061742031303a3030", "a33a986b3f8b111dfbfb1d2e6f0934748fba6efc07a9fab9"), "damn! something went wrong - no." + ++counter);
+        assertEquals("4f7065726174696f6e2073746172742061742031303a3030", OneTimePad.xorHexStrings("ec4afd195eff787295db6e5a0e7b4054eece4ecd3793ca89", "a33a986b3f8b111dfbfb1d2e6f0934748fba6efc07a9fab9"), "damn! something went wrong - no." + ++counter);
+
     }
 
 
@@ -70,7 +72,7 @@ public class OneTimePad_UnitTest {
     }
 
 
-    @Disabled
+
     @Test
     @DisplayName("tests, if the cipher text is correctly decrypted")
     void testDecryption(){
